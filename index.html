@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harga Warung – catatan harga barang</title>
+<meta name="description" content="Catat dan cari harga barang warung per kelompok dan golongan. Cepat, bisa offline.">
+<meta name="theme-color" content="#0f2238">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script>try{var t=localStorage.getItem('warung-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h28v36H14L4 24z" fill="#ffc933"/><circle cx="15" cy="24" r="3.2" fill="#0f2238"/></svg>
+      <h1>Harga Warung</h1>
+    </div>
+    <p class="stats"><span id="stats">&nbsp;</span> <button class="link" data-a="toggleAll" id="tall">Buka semua</button></p>
+    <div class="actions">
+      <button data-a="addG">+ Kelompok</button>
+      <button data-a="export">Ekspor</button>
+      <button data-a="import">Impor</button>
+      <button data-a="theme" aria-label="Ganti tema">Tema</button>
+    </div>
+    <input type="file" id="file" accept="application/json,.json" hidden>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="wrap barin">
+    <label class="search">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Cari barang, mis. kopi" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Cari barang">
+    </label>
+    <div class="seg" role="group" aria-label="Urutkan">
+      <button data-a="sort" data-v="az" aria-pressed="true">A–Z</button>
+      <button data-a="sort" data-v="lo" aria-pressed="false">Termurah</button>
+      <button data-a="sort" data-v="hi" aria-pressed="false">Termahal</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="out" aria-live="polite"></main>
+
+<button class="fab" data-a="addI">+ Barang</button>
+<div class="toast" id="toast" role="status" hidden><span id="tmsg"></span><button data-a="undo" id="tundo">Urungkan</button></div>
+<dialog id="dlg"></dialog>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
